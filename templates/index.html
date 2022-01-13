@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<html>
+  <head>
+    <title>Sentiment Analysis based Product Recommendation System</title>
+  </head>
+
+  <body>
+    <div class="container" align="center">
+      <nav>
+        <h2>Welcome to Sentiment Analysis Based Product Recommendation System</h2>
+      </nav>
+    </div>
+    </br>
+    {% block content %}
+    <div class="container" align="center">
+        <div class="jumbotron">
+          <h3>Enter UserName</h3>
+          <form action="{{url_for('view')}}">
+            <input type="text" name="user_name" class="form-control">
+            <input type="submit" class="btn btn-info" value="Submit">
+          </form>
+        </div>
+      </div>
+      <br>
+      <div class="page" align="center">
+        {% for table in tables %}
+          <h2>{{titles[loop.index]}}</h2>
+          {{ table|safe }}
+        {% endfor %}
+      </div>
+    {% endblock %}
+
+  </body>
+
+</html>
