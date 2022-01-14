@@ -2,28 +2,33 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <html>
   <head>
-    <title>Sentiment Analysis based Product Recommendation System</title>
+    <title>Sentiment Analysis Based Product Recommendation System</title>
   </head>
 
   <body>
     <div class="container" align="center">
       <nav>
-        <h2>Welcome to Sentiment Analysis Based Product Recommendation System</h2>
+        <h2>Welcome to Sentiment Analysis Based Product Recommendation System </h2>
       </nav>
     </div>
     </br>
     {% block content %}
     <div class="container" align="center">
         <div class="jumbotron">
-          <h3>Enter UserName</h3>
+          <h3>Enter Unique UserName</h3>
           <form action="{{url_for('view')}}">
             <input type="text" name="user_name" class="form-control">
             <input type="submit" class="btn btn-info" value="Submit">
           </form>
         </div>
       </div>
+      <div align="center">
+        {% if error %}
+          <p>Given User doesn't exist or having issue with the user data</p>
+        {% endif %}
+      </div>
       <br>
-      <div class="page" align="center">
+      <div align="center">
         {% for table in tables %}
           <h2>{{titles[loop.index]}}</h2>
           {{ table|safe }}
